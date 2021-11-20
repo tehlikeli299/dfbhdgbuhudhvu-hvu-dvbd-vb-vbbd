@@ -1,0 +1,41 @@
+<link rel="icon" href="<%= bot.user.avatarURL() %>" type="image/x-icon" />
+<title>
+<%= bot.user.username %>
+</title>
+
+<div>
+  
+<meta http-equiv="refresh" content="5;URL=https://discord.com/oauth2/authorize?client_id=826503363348135978&scope=bot&permissions=8"> 
+ <center>
+<p style=" margin-top: 30px; font-family: 'Quicksand', black; color: #0561ff; font-size: 30px;"><b>Lütfen Bekleyin <br>Yönlendiriliyorsunuz...<b></p>
+  <img src="https://www.mehsatek.com/wp-content/uploads/loading-gif/loading-gif-08.gif">
+</center>
+  <a href="https://discord.com/oauth2/authorize?client_id=826503363348135978&scope=bot&permissions=8"></a> </p>
+</div>
+  
+  <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false"></body>
+<script type="text/javascript">
+
+//form tags to omit in NS6+:
+var omitformtags=["input", "textarea", "select"]
+
+omitformtags=omitformtags.join("|")
+
+function disableselect(e){
+if (omitformtags.indexOf(e.target.tagName.toLowerCase())==-1)
+return false
+}
+
+function reEnable(){
+return true
+}
+
+if (typeof document.onselectstart!="undefined")
+document.onselectstart=new Function ("return false")
+else{
+document.onmousedown=disableselect
+document.onmouseup=reEnable
+}
+
+</script>
+<body onkeydown="return false">

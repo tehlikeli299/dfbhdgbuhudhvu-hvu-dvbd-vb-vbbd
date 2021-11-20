@@ -1,0 +1,41 @@
+<%- include('ek/header', {bot, user, path}) %>
+<title>Preless - Başarılı</title>
+<div class="card text-center" style="background:GREEN;margin-top:100px;">
+  <div class="card-header" style="color:GREEN;background:#333">
+    <i class="fas fa-check-circle"></i>Başarılı<i class="fas fa-check-circle"></i>
+  </div>
+  <div class="card-body" style="background:#334;color:#fff;">
+    <p class="card-text"><%= text || "Yazı Bulunamadı" %></p>
+    <br>
+    <a href="/" class="btn btn-outline-primary">Ana Sayfa</a>
+  </div>
+</div>
+
+
+
+   <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false"></body>
+<script type="text/javascript">
+
+//form tags to omit in NS6+:
+var omitformtags=["input", "textarea", "select"]
+
+omitformtags=omitformtags.join("|")
+
+function disableselect(e){
+if (omitformtags.indexOf(e.target.tagName.toLowerCase())==-1)
+return false
+}
+
+function reEnable(){
+return true
+}
+
+if (typeof document.onselectstart!="undefined")
+document.onselectstart=new Function ("return false")
+else{
+document.onmousedown=disableselect
+document.onmouseup=reEnable
+}
+
+</script>
+<body onkeydown="return false">

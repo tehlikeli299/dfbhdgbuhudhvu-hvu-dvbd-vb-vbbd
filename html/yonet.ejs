@@ -1,0 +1,150 @@
+<%- include('ek/header', {bot, user, path}) %>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+<center>
+  <img style=" margin-top: 50px; border-radius: 150px;" src="<%= bot.user.avatarURL() %>">
+    <h3 style="color: #0561ff; margin-top: 30px; font-family: 'Quicksand', black; font-size: 30px;">
+ <b><!--BOT İSMİ YAZILACAK--></b>
+ </h3>
+    <p style="color: #fff; margin-top: 30px; font-family: 'Quicksand', black; font-size: 20px;">
+   Yönetmek İstediğin Sunucuyu Seç
+  </p>
+  
+  
+ </div>
+ </center>
+ <br> <br>
+<div class="container">
+ <div class="row">
+<ul class="list-unstyled">
+    <% user.guilds.forEach(guild => {
+    const permsOnGuild = new perms(guild.permissions);
+    if(!permsOnGuild.has("MANAGE_GUILD")) return;
+  %>
+   <% if (bot.guilds.cache.get(guild.id)) { %>
+    <% var a = "Sunucuyu Yönet" %>
+ 
+    <% } else { %>
+        <% var a = "Sunucuya Ekle" %>
+ 
+    <% } %>
+        <% if (bot.guilds.cache.get(guild.id)) { %>
+    <% var link = `/yonet?server=${guild.id}` %>
+    <% } else { %>    
+    <% var link = `https://discord.com/oauth2/authorize?scope=bot&response_type=code&redirect_uri=${bot.ayarlar.callbackURL}&permissions=8&client_id=${bot.user.id}&guild_id=${guild.id}` %>
+    <% } %>
+   <div class="kutu border">
+<div class="container" style="margin-top: 20px;">
+  <img src="https://cdn.discordapp.com/icons/<%=guild.id%>/<%=guild.icon%>.png?size=128" style="margin-right: 20px; width:104px;height:104px;border-radius: 150px;" onerror="this.onerror=null;this.src='https://i.pinimg.com/originals/35/79/3b/35793b67607923a68d813a72185284fe.jpg'" alt="icon" class="w3-left w3-circle">
+  <p style="color:#fff;"><%= bot.tools.kisalt(guild.name) %></p>
+  <a style="color:#c9c2c2">
+     <% if (bot.guilds.cache.get(guild.id)) { %>
+    <!-- Bot sunucuda var.-->
+    <% } else { %>
+   <!--  Bot sunucuda yok. -->
+      <% } %></a>
+      <br> <br>
+<a href="<%=link%>" type="button" style="text-align: center; line-height:44px; font-family: 'Quicksand', black; font-size: 18px; color: #fff;" class="div breezy"><%= a %></a>
+</div>
+</div>
+  <!--
+   <a href="<%=link%>">
+    <div id="kart2" class="kart" style="max-width: 18rem;width: 18rem;">
+   <img class="card-img-top" src="https://cdn.discordapp.com/icons/<%=guild.id%>/<%=guild.icon%>.png?size=128" style="width:104px;height:104px;border-radius: 150px;" onerror="this.onerror=null;this.src='https://cdn.discordapp.com/attachments/800474052509827082/807338869292269638/discord_101785.png'">
+ <div class="card-body">
+    <p class="card-text"><%= guild.name %></p>
+  </div>
+</div>
+  </a>
+-->
+  <% }) %>
+</ul>
+</div>
+</div>
+<style>
+
+.div     { width: 150px; height: 44px; border-radius: 6px; }
+
+.breezy {
+    background: linear-gradient( to top right,rgb(36 34 40) 0%, rgb(53 52 61) 50%);
+    box-shadow: 1px 1px 30px rgb(0 0 0);
+}
+
+  .jumbotron {
+    font-family: 'Quicksand', sans-serif;
+    align-items:center;
+  }
+.border
+{
+height:180px;
+float:left;
+  border-radius: 30px;
+margin-left:15px;
+margin-top: 20px;
+background-color: #212529 /*rgba(0,67,255, 0.4);*/
+    position: relative;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    -moz-transform: scale(1);
+    transition: all .3s ease-in;
+    -moz-transition: all .3s ease-in;
+    -webkit-transition: all .3s ease-in;
+    -ms-transition: all .2s ease-in;
+}
+
+.border:hover
+{
+    z-index:4;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);  
+    -moz-transform: scale(1.1);
+    transform: scale(1.1);
+}
+  .container{
+    padding:0.01em 16px
+  }
+  .row:after,.row:before{
+    content:"";
+    display:table;
+    clear:both
+  }
+  .kutu{
+    float:left;
+    width:100%
+  }
+@media (min-width:601px){
+  .kutu{width:30.33333%}
+  }
+  
+</style>
+<%- include('ek/footer') %>
+</div>
+</body>
+
+
+
+   <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false"></body>
+<script type="text/javascript">
+
+//form tags to omit in NS6+:
+var omitformtags=["input", "textarea", "select"]
+
+omitformtags=omitformtags.join("|")
+
+function disableselect(e){
+if (omitformtags.indexOf(e.target.tagName.toLowerCase())==-1)
+return false
+}
+
+function reEnable(){
+return true
+}
+
+if (typeof document.onselectstart!="undefined")
+document.onselectstart=new Function ("return false")
+else{
+document.onmousedown=disableselect
+document.onmouseup=reEnable
+}
+
+</script>
+<body onkeydown="return false">

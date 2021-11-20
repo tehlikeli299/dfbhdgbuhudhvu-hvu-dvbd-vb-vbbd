@@ -1,0 +1,155 @@
+<%- include('ek/header', {bot, user, path}) %>
+
+<title><%=bot.user.username%></title>
+
+<br><br><br>
+<div class="contanier">
+
+</div>
+<div class="contanier">
+  
+</div>
+
+<center>
+    <div style="color: blue; margin-top: 30px; font-family: 'Quicksand', black; font-size: 20px;">
+  BİLGİLENDİRME: Profil Sistemi Geliştirilmek Üzere Böyledir İleride Değişecektir.
+  </div>
+</center>
+  <hr>
+<div class="container">
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body" style="color: black;background: #212529;">
+                  <div class="d-flex flex-column align-items-center text-center">  
+                <div class="mt-3">
+                  
+                  <a>
+                   <img src="<%= bot.kisibul(user.id).avatar %>" style="border-radius:50%;width:200px;height:200px">
+                      <h4> <%= isim.username %></h4>
+		      
+</a>
+                      
+                          
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body" style="background: #212629;">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0" style="color: white;"> <i class="fa fa-user"></i>  Kullanıcı Adı</h6>
+                    </div>
+                    <div class="col-sm-9 text" style="color: white;">
+             <%=isim%>
+                    </div>
+                  </div>
+                  <hr>
+                                    <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0" style="color: white;"> <i class="fa fa-fingerprint"></i> Kullanıcı ID</h6>
+                    </div>
+                    <div class="col-sm-9 text" style="color: white;">
+                    <%=user.id%>
+                    </div>
+                  </div>
+                 <hr> 
+                  
+                                    <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0" style="color: white;"> <i class="fa fa-tag"></i> Discriminator</h6>
+                    </div>
+                    <div class="col-sm-9 text" style="color: white;">
+           #<%=disc%>
+                    </div>
+                  </div>            
+                  <hr>
+                  
+                  
+                                              <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0" style="color: white;"> <i class="fa fa-user-plus"></i> Üyelik Durumu</h6>
+                    </div>
+                    <div class="col-sm-9 text" style="color: white;">
+         
+                    <%  if(bot.db.has(`üyelikk_${user.id}`) === true)  { %>Gold Üye<%  }  %> 
+                   <%  if(!bot.db.has(`üyelikk_${user.id}`) === true)  { %>Normal Üye<%  }  %> 
+                      
+                      
+                    </div>
+                  </div>            
+      
+                  
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+
+<!-- SCRIPTS -->
+<style>
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+</style>
+
+<%- include('ek/footer', {bot, user, path}) %>
+
+
+   <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false"></body>
+<script type="text/javascript">
+
+//form tags to omit in NS6+:
+var omitformtags=["input", "textarea", "select"]
+
+omitformtags=omitformtags.join("|")
+
+function disableselect(e){
+if (omitformtags.indexOf(e.target.tagName.toLowerCase())==-1)
+return false
+}
+
+function reEnable(){
+return true
+}
+
+if (typeof document.onselectstart!="undefined")
+document.onselectstart=new Function ("return false")
+else{
+document.onmousedown=disableselect
+document.onmouseup=reEnable
+}
+
+</script>
+<body onkeydown="return false">
